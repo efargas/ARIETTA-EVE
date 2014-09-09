@@ -1,0 +1,14 @@
+
+*.sln
+
+*.suo
+
+*.vcxproj
+
+*.filters
+
+*.user
+
+*.xcworkspacedata
+
+*.xcuserstate
