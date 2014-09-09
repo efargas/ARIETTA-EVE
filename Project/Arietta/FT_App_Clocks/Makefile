@@ -1,6 +1,6 @@
 #############################################################
 # Project name
-PROJECT = EVEtest
+PROJECT = FT_App_Clocks
 PLATFORM = ARIETTA
 
 # Source files
