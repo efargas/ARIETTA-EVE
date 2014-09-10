@@ -58,7 +58,8 @@ typedef char ft_bool_t;
 typedef uint32_t argb8888;
 #define FT800EMU_FORCE_INLINE inline __attribute__((always_inline))
 
-
+#define min(a,b) (((a)<(b))?(a):(b))
+#define max(a,b) (((a)>(b))?(a):(b))
 
 
 #endif /*_FT_DATATYPES_H_*/

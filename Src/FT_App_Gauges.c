@@ -537,8 +537,8 @@ ft_uint8_t Read_Keys()
 {
   static ft_uint8_t Read_tag=0,temp_tag=0,ret_tag=0;	
   Read_tag = Ft_Gpu_Hal_Rd8(phost,REG_TOUCH_TAG);
-  ret_tag = NULL;
-  if(Read_tag!=NULL)								// Allow if the Key is released
+  ret_tag = 0;
+  if(Read_tag!=0)								// Allow if the Key is released
   {
     if(temp_tag!=Read_tag)
     {
@@ -803,7 +803,7 @@ void Gauges()
 
 
 
-#ifdef MSVC_PLATFORM
+#if defined(MSVC_PLATFORM)||defined(ARIETTA)
 /* Main entry point */
 ft_int32_t main(ft_int32_t argc,ft_char8_t *argv[])
 #endif

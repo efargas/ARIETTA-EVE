@@ -1,13 +1,13 @@
 #############################################################
 # Project name
-PROJECT = FT_App_Clocks
+PROJECT = FT_App_Gauges
 PLATFORM = ARIETTA
 
 # Source files
 ROOTDIR = ../../..
 SRCDIR = $(ROOTDIR)/Src
 CSRCS = \
-  $(SRCDIR)/FT_App_Clocks.c \
+  $(SRCDIR)/FT_App_Gauges.c \
   $(SRCDIR)/FT_Gpu_Hal.c \
   $(SRCDIR)/FT_CoPro_Cmds.c \
 
