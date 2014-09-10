@@ -51,7 +51,6 @@ static void pabort(const char *s)
 /* API to initialize the SPI interface */
 ft_bool_t  Ft_Gpu_Hal_Init(Ft_Gpu_HalInit_t *halinit)
 {
-   printf("Ft_Gpu_Hal_Init ");
 #ifdef ARDUINO_PLATFORM_SPI
    pinMode(FT_ARDUINO_PRO_SPI_CS, OUTPUT);
    pinMode(FT800_PD_N, OUTPUT);
@@ -64,7 +63,8 @@ ft_bool_t  Ft_Gpu_Hal_Init(Ft_Gpu_HalInit_t *halinit)
    Init_libMPSSE();
    SPI_GetNumChannels(&halinit->TotalChannelNum);
    /* By default i am assuming only one mpsse cable is connected to PC and channel 0 of that mpsse cable is used for spi transactions */
-   if(halinit->TotalChannelNum > 0) {
+	if(halinit->TotalChannelNum > 0)
+	{
       FT_DEVICE_LIST_INFO_NODE devList;
       SPI_GetChannelInfo(0,&devList);
       printf("Information on channel number %d:\n",0);
@@ -282,6 +282,7 @@ ft_void_t  Ft_Gpu_Hal_StartTransfer(Ft_Gpu_Hal_Context_t *host,FT_GPU_TRANSFERDI
       host->status = FT_GPU_HAL_WRITING;
    }
 }
+
 
 
 /*The APIs for writing transfer continuously only*/
@@ -855,26 +856,29 @@ ft_int32_t Ft_Gpu_Hal_Dec2Ascii(ft_char8_t *pSrc,ft_int32_t value)
    Length = strlen(pSrc);
    pdst = pSrc + Length;
 
-   if(0 == value) {
-      *pdst++ = '0';
-      *pdst++ = '\0';
-      return 0;
-   }
+	if(0 == value)
+	{
+		*pdst++ = '0';
+		*pdst++ = '\0';
+		return 0;
+	}
 
-   if(CurrVal < 0) {
-      *pdst++ = '-';
-      CurrVal = - CurrVal;
-   }
-   /* insert the value */
-   while(CurrVal > 0) {
-      tmpval = CurrVal;
-      CurrVal /= 10;
-      tmpval = tmpval - CurrVal*10;
-      charval = '0' + tmpval;
-      tmparray[idx++] = charval;
-   }
+	if(CurrVal < 0)
+	{
+		*pdst++ = '-';
+		CurrVal = - CurrVal;
+	}
+	/* insert the value */
+	while(CurrVal > 0){
+		tmpval = CurrVal;
+		CurrVal /= 10;
+		tmpval = tmpval - CurrVal*10;
+		charval = '0' + tmpval;
+		tmparray[idx++] = charval;
+	}
 
-   for(i=0; i<idx; i++) {
+	for(i=0;i<idx;i++)
+	{
       *pdst++ = tmparray[idx - i - 1];
    }
    *pdst++ = '\0';
